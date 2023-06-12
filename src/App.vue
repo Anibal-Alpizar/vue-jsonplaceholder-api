@@ -1,17 +1,43 @@
 <template>
-  <h1>Hello World</h1>
-  <table>
-    <thead>
-      <tr>
-        <th>User</th>
-      </tr>
-      <tbody>
-          <tr v-for="user in users" :key="user.id"> 
-              {{ user.name }}
+  <div class="container">
+    <div class="row">
+      <h1>Hello World!</h1>
+      <input
+        type="text"
+        class="form-control bg-dark text-light rounded-0 border-0 my-4"
+        placeholder="Search"
+      />
+
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th v-for="title in titles" :key="title">
+              {{ title }}
+            </th>
           </tr>
-      </tbody>
-    </thead>
-  </table>
+        </thead>
+        <tbody>
+          <tr v-for="user in users" :key="user.id">
+            <td>
+              {{ user.id }}
+            </td>
+            <td>
+              {{ user.name }}
+            </td>
+            <td>
+              {{ user.username }}
+            </td>
+            <td>
+              {{ user.email }}
+            </td>
+            <td>
+              {{ user.address.street }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -20,6 +46,7 @@ export default {
   data() {
     return {
       users: [],
+      titles: ["id", "name", "username", "email", "address"],
     };
   },
   async mounted() {
